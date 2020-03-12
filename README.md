@@ -9,7 +9,7 @@ To update the version of Asterisk:
   * Download the upstream tarball, extract it and cd into the directory
 
 ```sh
-VERSION=$(dpkg-parsechangelog | awk -F': ' '{ if($1 == "Version") { print $NF } }' | sed -ne 's/^\(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
+VERSION=$(dpkg-parsechangelog | awk -F': ' '{ if($1 == "Version") { print $NF } }' | sed -ne 's/^\(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')-rc1
 grep '^ASTERISK_URL_DOWNLOAD' debian/rules | awk -F' = ' '{ print $NF }' | sed -n "s/\${VER}/$VERSION/p" | xargs wget
 tar -xf asterisk-$VERSION.tar.gz && cd asterisk-$VERSION
 ```
